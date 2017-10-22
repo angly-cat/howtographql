@@ -52,30 +52,33 @@ export default class Sidebar extends React.Component<Props, {}> {
       <div className="sidebar-container">
         <style jsx={true}>{`
           .sidebar-container {
-            @p: .relative, .z0;
-          }
-          .sidebar {
-            @p: .flexFixed, .pt38, .bbox, .relative, .bl, .bBlack10;
+            @p: .relative, .bbox, .z0, .bl, .bBlack10;
             background-color: rgb(245, 245, 245);
-            padding-left: 21px;
             height: calc(100vh - 68px);
             width: 300px;
+            overflow-x: hidden;
             overflow-y: scroll; /* has to be scroll, not auto */
             -webkit-overflow-scrolling: touch;
           }
+          .sidebar {
+            @p: .flexFixed, .relative;
+            background-color: rgb(245, 245, 245);
+            padding-left: 21px;
+            overflow-y: visible;
+          }
           .sidebar-container::before {
-            @p: .absolute, .top0, .right0, .z3;
+            @p: .top0, .right0, .z3;
+            position: sticky;
+            display: block;
             left: 1px;
             content: "";
+            pointer-events: none;
             background: linear-gradient(
               to bottom,
               rgb(245, 245, 245) 30%,
               rgba(245, 245, 245, 0)
             );
             height: 38px;
-          }
-          .sidebar :global(.plus) {
-            background-color: rgb(245, 245, 245);
           }
           .steps-list {
             @p: .pb96;
